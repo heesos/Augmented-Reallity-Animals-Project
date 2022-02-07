@@ -1,0 +1,40 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "com.google.ar.university.project.app"
+
+        // Sceneform requires minSdkVersion >= 24.
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+    task wrapper(type: Wrapper){
+        gradleVersion = '7.2'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    aaptOptions {
+        noCompress 'filamat', 'ktx'
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:1.3.1"
+    implementation "androidx.fragment:fragment:1.3.6"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'com.google.android.material:material:1.4.0'
+
+    //glid
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    releaseImplementation "com.gorisse.thomas.sceneform:sceneform:1.20.1"
+    debugApi project(":sceneform")
+}
